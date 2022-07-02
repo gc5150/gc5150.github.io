@@ -44,9 +44,73 @@
         <div id="content"> 
           
           <div id="home" class="content-region hide">
-            <p>
-              Click <a href="https://github.com/gc5150/sierrachart">here</a> to access studies until this page is updated.                      
-            </p>
+<h3 dir="auto">DOM: Auto Clear Recent Bid/Ask Volume</h3>
+<p dir="auto">This study automatically clears the 'Recent Bid/Ask Volume' for the symbol of the chart at specified session times. Option to also include 'Current Traded Bid/Ask Volume' when auto clearing.</p>
+<ul dir="auto">
+<li>Required Sierra Chart Version: 2368 (March 15, 2022) or higher</li>
+</ul>
+<p dir="auto">Source File:&nbsp;<a href="https://github.com/gc5150/sierrachart/blob/master/gc5150_AutoClearRecentBidAskVolume.cpp">gc5150_AutoClearRecentBidAskVolume.cpp</a></p>
+<hr />
+<h3 dir="auto">Fair Value Gap Study (FVG)</h3>
+<p dir="auto">This study finds Fair Value Gaps for the given chart and draws based on configured parameters in the Study Settings. Main features:</p>
+<ul dir="auto">
+<li>Independent settings for Up and Down Gaps</li>
+<li>Extend until Gap filled</li>
+<li>Minimum Gap size in ticks</li>
+<li>Allow copying to other chart drawings</li>
+<li>Enable/Disable FVG Up and Down gaps</li>
+<li>Hide Gaps once filled</li>
+<li>Specify maximum lookback for bars to process</li>
+<li>Draw Midline</li>
+</ul>
+<p dir="auto">Source File:&nbsp;<a href="https://github.com/gc5150/sierrachart/blob/master/gc5150_FVG.cpp">gc5150_FVG.cpp</a></p>
+<hr />
+<h3 dir="auto">Forex Factory</h3>
+<p dir="auto">This study downloads the weeks Forex Events from&nbsp;<a href="https://www.forexfactory.com/" rel="nofollow">Forex Factory</a>&nbsp;and displays them on your chart. Main features:</p>
+<ul dir="auto">
+<li>Filter by all currencies (Countries)</li>
+<li>Filter by Expected Impact</li>
+<li>Alerts via Subgraphs to color candles 10m before event</li>
+<li>Alerts via Subgraphs to color candles at time of event (alert active for 1 minute)</li>
+<li>Hide previous events</li>
+<li>Show tomorrow's events</li>
+<li>Adjust color settings independently for past/upcoming/current events</li>
+<li>Uses FF default colors for Event Impact markers</li>
+<li>Adjust font size</li>
+<li>Adjust horizontal and vertical offset</li>
+<li>Adjust event spacing</li>
+<li>Note: Not a feature, but does NOT currently work with TPO charts</li>
+</ul>
+<p dir="auto">Source File:&nbsp;<a href="https://github.com/gc5150/sierrachart/blob/master/gc5150_ForexFactory.cpp">gc5150_ForexFactory.cpp</a><br />Requires:&nbsp;<a href="https://github.com/gc5150/sierrachart/blob/master/nlohmann/json.hpp">nlohmann json.hpp include</a><br />Pre-Compiled DLL:&nbsp;<a href="https://github.com/gc5150/sierrachart/blob/master/bin/gc5150_ForexFactory_64.dll">Compiled with SC 2408</a></p>
+<hr />
+<h3 dir="auto">RSI</h3>
+<p dir="auto">This study is a mod of stock RSI to include additional lines to reference. Example:</p>
+<ul dir="auto">
+<li>You might want a 70/30 set of lines</li>
+<li>And also an 80/20 set of lines</li>
+</ul>
+<p dir="auto">Source File:&nbsp;<a href="https://github.com/gc5150/sierrachart/blob/master/gc5150_RSI.cpp">gc5150_RSI.cpp</a></p>
+<hr />
+<h3 dir="auto">Trading System Based on Alert Condition - Limit Order</h3>
+<p dir="auto">This study is a modification of the included 'Trading System Based On Alert Condition Study' that ships with Sierra. Main Features:</p>
+<ul dir="auto">
+<li>Option to use limit orders instead of market orders</li>
+<li>Auto cancel orders if not filled within x amount of bars</li>
+</ul>
+<p dir="auto">Source File:&nbsp;<a href="https://github.com/gc5150/sierrachart/blob/master/gc5150_TradingSystemBasedOnAlertConditionLimitOrder.cpp">gc5150_TradingSystemBasedOnAlertConditionLimitOrder.cpp</a></p>
+<hr />
+<h3 dir="auto">No Mo Paper Hands</h3>
+<p dir="auto">This is a 'for fun' study that has issues of it's own. The idea is if you continually close trades too early then maybe you need a reminder not to... so you can load this study and it will continually lock trading when you have active positions. But the 'issues of it's own' is that you can always be extra super paper hand and just remove the study and then unlock trading again to bail :) One issue I ran into is with non Teton order routing. Basically client side vs server side. I believe I fixed the client side issues by just cancel/flatten all orders if you are stopped or profit target hit. Otherwise you have issues as discussed in this thread:&nbsp;<a href="https://www.sierrachart.com/SupportBoard.php?ThreadID=73330" rel="nofollow">https://www.sierrachart.com/SupportBoard.php?ThreadID=73330</a></p>
+<p dir="auto">Source File:&nbsp;<a href="https://github.com/gc5150/sierrachart/blob/master/gc5150_NoMoPaperHands.cpp">gc5150_NoMoPaperHands.cpp</a></p>
+<hr />
+<h3 dir="auto">Rango Pinch</h3>
+<p dir="auto">This is a Pinch study based on MACD/ADX pinch-release. To visually see pinches and releases you can toss a MACD and ADX study on your chart and take a look. Try it on 512t chart and 1m chart. Some people will put it on multiple time frame/tick/volume charts and look at the confluence between the pinches forming and releasing. Written mainly as an exercise in learning Sierra studies, named after a Bearded Dragon.</p>
+<p dir="auto">Source File:&nbsp;<a href="https://github.com/gc5150/sierrachart/blob/master/gc5150_RangoPinch.cpp">gc5150_RangoPinch.cpp</a></p>
+<hr />
+<h3 dir="auto">Output Bar Formula Value To Subgraph</h3>
+<p dir="auto">This study will take the result of the given formula and place the output in a subgraph. This was written as a helper study to avoid using Spreadsheets to perform the same function. We couldn't find an alerternative method to accomplish the same thing. So gave this a shot.</p>
+<p dir="auto">Source File:&nbsp;<a href="https://github.com/gc5150/sierrachart/blob/master/gc5150_OutputBarFormulaValueToSubgraph.cpp">gc5150_OutputBarFormulaValueToSubgraph.cpp</a></p>
+<hr />
           </div>
           
           <div id="about" class="content-region hide">
