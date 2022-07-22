@@ -33,6 +33,7 @@
       <!-- Menu link fragment #id should match a div id. Example: <a href="#home"> links to <div id="home"></div>  -->
       <ul class="main-menu">
         <li><a href="#studies">studies</a></li>
+        <li><a href="#download">download</a></li>
         <li><a href="#chartbooks">chartbooks</a></li>
         <li><a href="#install">install</a></li>
         <li><a href="#about">about</a></li>
@@ -50,10 +51,7 @@
                   <hr />
                   <h3 dir="auto">DOM: Auto Clear Recent Bid/Ask Volume</h3>
                   <p dir="auto">This study automatically clears the 'Recent Bid/Ask Volume' for the symbol of the chart at specified session times. Option to also include 'Current Traded Bid/Ask Volume' when auto clearing.</p>
-                  <ul dir="auto">
-                      <li>Required Sierra Chart Version: 2368 (March 15, 2022) or higher</li>
-                  </ul>
-                  <p dir="auto"><a href="https://raw.githubusercontent.com/gc5150/sierrachart/master/gc5150_AutoClearRecentBidAskVolume.cpp">Source Code</a></p>
+
                   <hr />
                   <h3 dir="auto">Fair Value Gap Study (FVG)</h3>
                   <p dir="auto">This study finds Fair Value Gaps for the given chart and draws based on configured parameters in the Study Settings.</p>
@@ -61,14 +59,18 @@
                   <ul dir="auto">
                       <li>Independent settings for Up and Down Gaps</li>
                       <li>Extend until Gap filled</li>
-                      <li>Minimum Gap size in ticks</li>
+                      <li>Minimum Gap size in ticks for FVG's</li>
+                      <li>Minimum Gap size in ticks for FVG Subgraphs</li>
                       <li>Allow copying to other chart drawings</li>
                       <li>Enable/Disable FVG Up and Down gaps</li>
                       <li>Hide Gaps once filled</li>
                       <li>Specify maximum lookback for bars to process</li>
                       <li>Draw Midline</li>
+                      <li>Subgraphs for FVG Count</li>
+                      <li>Subgraphs for High and Low of FVG Up/Dn. Idea is to use these for trailing stops and/or targets with trade management study. The Subgraphs will shift based on open FVG's. Once FVG is closed the Subgraph will shift to the new one. Hard to explain so best thing is to set the drawstyle for all of the subgraphs to dash or line and see how it works. TEST ON SIM FIRST!!!</li>
+                      <li>Option to use additional study data to determine if that candle that creates the FVG (middle candle) should be used or not. Example: You could have a formula check if volume meets a certain threshold and output non-zero value for true. If the threshold is met then draw FVG. Otherwise, ignore this candle and don't draw the FVG.</li>
                   </ul>
-                  <p dir="auto"><a href="https://raw.githubusercontent.com/gc5150/sierrachart/master/gc5150_FVG.cpp">Source Code</a></p>
+
                   <hr />
                   <h3 dir="auto">Forex Factory</h3>
                   <p dir="auto">This study downloads the weeks Forex Events from&nbsp;<a href="https://www.forexfactory.com/" rel="nofollow">Forex Factory</a>&nbsp;and displays them on your chart. IMPORTANT! "Use OpenGL for Chart Graphics" must be disabled for this study to work. <a href="https://www.sierrachart.com/SupportBoard.php?PostID=225735#P225735">According to Sierra Chart</a>, OpenGL is not supported for ACSIL and it is not currently planned. If you require OpenGL, a work around would be to run multiple instances of Sierra and disable OpenGL on just the instance for this study.</p>
@@ -80,13 +82,14 @@
                       <li>Alerts via Subgraphs to color candles at time of event (alert active for 1 minute)</li>
                       <li>Hide previous events</li>
                       <li>Show tomorrow's events</li>
+                      <li>Show tomorrow's events only after specified time</li>
                       <li>Adjust color settings independently for past/upcoming/current events</li>
                       <li>Uses FF default colors for Event Impact markers</li>
                       <li>Adjust font size</li>
                       <li>Adjust horizontal and vertical offset</li>
                       <li>Adjust event spacing</li>
                   </ul>
-                  <p dir="auto"><a href="https://raw.githubusercontent.com/gc5150/sierrachart/master/gc5150_ForexFactory.cpp">Source Code</a><br /><a href="https://raw.githubusercontent.com/gc5150/sierrachart/master/nlohmann/json.hpp">Requires nlohmann json.hpp include</a><br /><a href="https://github.com/gc5150/sierrachart/raw/master/bin/2408/gc5150_ForexFactory_64.dll">Pre-Compiled DLL (SC 2408)</a></p>
+
                   <hr />
                   <h3 dir="auto">RSI</h3>
                   <p dir="auto">This study is a mod of stock RSI to include additional lines to reference. Example:</p>
@@ -94,7 +97,7 @@
                       <li>You might want a 70/30 set of lines</li>
                       <li>And also an 80/20 set of lines</li>
                   </ul>
-                  <p dir="auto"><a href="https://raw.githubusercontent.com/gc5150/sierrachart/master/gc5150_RSI.cpp">Source Code</a></p>
+
                   <hr />
                   <h3 dir="auto">Trading System Based on Alert Condition - Limit Order</h3>
                   <p dir="auto">This study is a modification of the included 'Trading System Based On Alert Condition Study' that ships with Sierra.</p>
@@ -103,20 +106,31 @@
                       <li>Option to use limit orders instead of market orders</li>
                       <li>Auto cancel orders if not filled within x amount of bars</li>
                   </ul>
-                  <p dir="auto"><a href="https://raw.githubusercontent.com/gc5150/sierrachart/master/gc5150_TradingSystemBasedOnAlertConditionLimitOrder.cpp">Source Code</a></p>
+
                   <hr />
                   <h3 dir="auto">No Mo Paper Hands</h3>
                   <p dir="auto">This is a 'for fun' study that has issues of it's own. The idea is if you continually close trades too early then maybe you need a reminder not to... so you can load this study and it will continually lock trading when you have active positions. But the 'issues of it's own' is that you can always be extra super paper hand and just remove the study and then unlock trading again to bail :) One issue I ran into is with non Teton order routing. Basically client side vs server side. I believe I fixed the client side issues by just cancel/flatten all orders if you are stopped or profit target hit. Otherwise you have issues as discussed in <a href="https://www.sierrachart.com/SupportBoard.php?ThreadID=73330" rel="nofollow">this thread.</a></p>
-                  <p dir="auto"><a href="https://raw.githubusercontent.com/gc5150/sierrachart/master/gc5150_NoMoPaperHands.cpp">Source Code</a></p>
+
                   <hr />
                   <h3 dir="auto">Rango Pinch</h3>
                   <p dir="auto">This is a Pinch study based on MACD/ADX pinch-release. To visually see pinches and releases you can toss a MACD and ADX study on your chart and take a look. Try it on 512t chart and 1m chart. Some people will put it on multiple time frame/tick/volume charts and look at the confluence between the pinches forming and releasing. Written mainly as an exercise in learning Sierra studies, named after a Bearded Dragon.</p>
-                  <p dir="auto"><a href="https://raw.githubusercontent.com/gc5150/sierrachart/master/gc5150_RangoPinch.cpp">Source Code</a></p>
+
                   <hr />
                   <h3 dir="auto">Output Bar Formula Value To Subgraph</h3>
-                  <p dir="auto">This study will take the result of the given formula and place the output in a subgraph. This was written as a helper study to avoid using Spreadsheets to perform the same function. We couldn't find an alerternative method to accomplish the same thing. So gave this a shot.</p>
-                  <p dir="auto"><a href="https://raw.githubusercontent.com/gc5150/sierrachart/master/gc5150_OutputBarFormulaValueToSubgraph.cpp">Source Code</a></p>
-                  <hr />
+                  <p dir="auto">This study will take the result of the given formula and place the output in a subgraph. This was written as a helper study to avoid using Spreadsheets to perform the same function. We couldn't find an alerternative method to accomplish the same thing so gave this a shot.</p>
+              </div>
+
+              <div id="download" class="content-region hide">
+                <hr />
+                <h3 dir="auto">Studies Collection Download</h3>
+                <p dir="auto">All studies are contained in a single download file. You are free to download the source code and compile it yourself. However, please be aware that 'Remote Builds' will not work properly as some of the studies require external header files (included in my github repo). You will need to install a compiler locally. Sierra Chart <a href="https://www.sierrachart.com/index.php?page=doc/AdvancedCustomStudyInterfaceAndLanguage.php">provides some information</a> that may help, otherwise Google is your friend. NOTE: Since you are downloading a DLL file you may get an alert of this being a malicious file. This is a good thing. You should be concerned when downloading files of this type. So please by ALL MEANS, go to <a href="https://www.virustotal.com/gui/home/url">Virus Total</a> and paste the download link to have it scanned to ensure it's safe. Or you can review the report I ran on it already below. It will show you the results along with the URL it scanned which should match the one listed here for Study Collection Download.</p>
+                <ul dir="auto">
+                  <li>Current Study File Version: 2417</li>
+                  <li>Minimum Required Sierra Chart Version: 2368</li>
+                  <li><a href="https://github.com/gc5150/sierrachart/raw/master/bin/2417/gc5150_Studies_2417_64.dll">Download Study Collection</li>
+                  <li><a href="https://github.com/gc5150/sierrachart">Source Code</a></li>
+                  <li><a href="https://www.virustotal.com/gui/url/e64b1a901eca303eaa522c7da12ec855596540ef612b69360063bc4d44b05612?nocache=1">Virus Total Report for Study Download Link</a>
+                </ul>
               </div>
 
               <div id="chartbooks" class="content-region hide">
@@ -131,38 +145,19 @@
               </div>
 
               <div id="install" class="content-region hide">
+                <h3 dir="auto">Study Collection DLL's</h3>
+                <ul>
+                  <li>Download the DLL file(s) and copy to your SierraChart "Data" folder</li>
+                  <li>Example folder location if Sierra installed on C drive in default location: "C:\SierraChart\Data"</li>
+                  <li>Go to "Analysis-&gt;Studies" (or F6) and then "Add Custom Study" and select the study you wish to add</li>
+                </ul>
+                
                 <h3 dir="auto">Chartbooks</h3>
                 <ul>
                   <li>Download the Chartbook file(s) and copy to your SierraChart "Data" folder</li>
                   <li>Example folder location if Sierra installed on C drive in default location: "C:\SierraChart\Data"</li>
                   <li>Then from SierraChart do "File-&gt;Open Chartbook" (or Ctrl-B) and select the Chartbook you wish to open</li>
                 </ul>
-                <h3 dir="auto">Pre-Compiled DLL's</h3>
-                <ul>
-                  <li>Download the DLL file(s) and copy to your SierraChart "Data" folder</li>
-                  <li>Example folder location if Sierra installed on C drive in default location: "C:\SierraChart\Data"</li>
-                  <li>Go to "Analysis-&gt;Studies" (or F6) and then "Add Custom Study" and select the study you wish to add</li>
-                </ul>
-                <h3 dir="auto">For all studies (exluding ForexFactory)</h3>
-                <ul>
-                  <li>Download the CPP source file(s) and copy to your SierraChart "ACS_Source" folder</li>
-                  <li>Example folder location if Sierra installed on C drive in default location "C:\SierraChart\ACS_Source"</li>
-                  <li>Then from SierraChart do "Analysis-&gt;Build Custom Studies DLL"</li>
-                  <li>This will bring up a window for "Build Advanced Custom Studies"</li>
-                  <li>Then select the study you wish to build with "File-&gt;Select Files"</li>
-                  <li>Select the study (CPP) file you wish to build</li>
-                  <li>Then do "Build-&gt;Remote Build"</li>
-                  <li>Once finished, you should see a message something like "The remote build succeeded."</li>
-                  <li>You can close the "Build Advanced Custom Studies" window</li>
-                  <li>Now go to "Analysis-&gt;Studies" (or F6) and then "Add Custom Study" and select the study you wish to add</li>
-                </ul>
-                <h3 dir="auto">Studies that require external header files (ForexFactory)</h3>
-                <ul>
-                  <li>Studies that require external header files need to be built locally</li>
-                  <li>Remote builds WILL NOT work for these</li>
-                  <li>You will need to download and install Visual Studio Code or some other compiler</li>
-                  <li>I appologize I can't provide instructions for this process as it can vary from system to system and may require a lot of troubleshooting to get setup properly</li>
-                </ul>                
               </div>
 
               <div id="contact" class="content-region hide">
